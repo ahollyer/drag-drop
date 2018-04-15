@@ -1,0 +1,108 @@
+/***********************************************************
+                  Global Style Variables
+***********************************************************/
+:root {
+  --header-fonts: 'Berkshire Swash', sans-serif;
+  --body-fonts: 'Quicksand', serif;
+  /*** Colors ***/
+  --background: rgba(13, 3, 88, 1);
+  --section: rgba(86, 36, 177, 1);
+  --accent: rgba(100, 33, 101, 0.5);
+  --contrast: rgba(181, 53, 189, 1);
+  --secondary: rgba(123, 97, 143, 1);
+  --primary: rgba(218, 194, 220, 1);
+}
+
+/*********************************************************
+                    General Styles
+*********************************************************/
+body {
+  /*** Background ***/
+  min-height: 100vh;
+  background: linear-gradient(
+    to bottom right,
+    var(--background),
+    var(--section),
+    var(--contrast)
+  );
+  /*** Text ***/
+  font-family: var(--body-fonts);
+  font-size: 18px;
+  color: var(--primary);
+  /*** Layout ***/
+  display: grid;
+  grid-template-columns: minmax(20px, 150px) auto minmax(20px, 150px);
+  grid-template-rows: 150px; auto;
+  grid-template-areas:
+    "header header header"
+    "store main catalog"
+    "footer footer footer";
+  padding: 0.5rem;
+}
+
+h1, h2 {
+  font-family: var(--header-fonts);
+}
+
+p {
+  margin: 0;
+}
+
+img {
+  width: 60px;
+  height: 60px;
+}
+
+.rounded {
+  border-radius: 5px;
+}
+
+/*********************************************************
+                    Primary Sections
+*********************************************************/
+header {
+  /*** Layout ***/
+  grid-area: header;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: var(--secondary); */
+}
+
+#store {
+  /*** Layout ***/
+  grid-area: store;
+  display: flex;
+  justify-content: center;
+  /* background-color: var(--secondary); */
+}
+
+main {
+  /*** Layout ***/
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent);
+}
+
+.game-box {
+  width: 100%;
+  height: 100%;
+}
+
+#catalog {
+  /*** Layout ***/
+  grid-area: catalog;
+  display: flex;
+  justify-content: center;
+  /* background-color: var(--secondary); */
+}
+
+footer {
+  /*** Layout ***/
+  grid-area: footer;
+  display: flex;
+  justify-content: center;
+}

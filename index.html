@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Drag n Drop</title>
+  <!--**************************************************************
+                            Fonts, Styles
+  ***************************************************************-->
+  <link href="https://fonts.googleapis.com/css?family=Quicksand|Berkshire+Swash" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+  <!--**************************************************************
+                                Header
+  ***************************************************************-->
+  <header class="rounded">
+    <h1>Drag n Drop</h1>
+    <p>Just playing around....</p>
+  </header>
+  <!--**************************************************************
+                                Store
+  ***************************************************************-->
+  <section id="store" class="rounded">
+    <h2>Store</h2>
+  </section>
+  <!--**************************************************************
+                                Main
+  ***************************************************************-->
+  <main  class="rounded">
+    <h2>Cats</h2>
+    <div class="game-box">
+      <img id="giraffe" src="/img/giraffe.png" alt="Giraffe">
+    </div>
+  </main>
+  <!--**************************************************************
+                                Catalog
+  ***************************************************************-->
+  <section id="catalog" class="rounded">
+    <h2>Catalog</h2>
+  </section>
+  <!--**************************************************************
+                                Footer
+  ***************************************************************-->
+  <footer>
+    <p>I am the footer.</p>
+  </footer>
+
+<!--**************************************************************
+                              Scripts
+***************************************************************-->
+<script type="text/javascript">
+var giraffe = document.getElementById('giraffe');
+giraffe.onmousedown = function(event) {
+
+  let shiftX = event.clientX - giraffe.getBoundingClientRect().left;
+  let shiftY = event.clientY - giraffe.getBoundingClientRect().top;
+
+  giraffe.style.position = 'absolute';
+  giraffe.style.zIndex = 1000;
+  document.body.append(giraffe);
+
+  moveAt(event.pageX, event.pageY);
+
+  // centers the giraffe at (pageX, pageY) coordinates
+  function moveAt(pageX, pageY) {
+    giraffe.style.left = pageX - shiftX + 'px';
+    giraffe.style.top = pageY - shiftY + 'px';
+  }
+
+  function onMouseMove(event) {
+    moveAt(event.pageX, event.pageY);
+  }
+
+  // (3) move the giraffe on mousemove
+  document.addEventListener('mousemove', onMouseMove);
+
+  // (4) drop the giraffe, remove unneeded handlers
+  giraffe.onmouseup = function() {
+    document.removeEventListener('mousemove', onMouseMove);
+    giraffe.onmouseup = null;
+  };
+
+};
+
+giraffe.ondragstart = function() {
+  return false;
+};
+</script>
+</body>
+</html>
