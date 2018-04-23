@@ -19,13 +19,13 @@
     <p>$<span id="scoreboard">0</span></p>
     <nav>
       <ul class="nav-list">
-        <li class="nav-button" onclick="openModal('store-modal')">
+        <li class="nav-button rounded" onclick="openModal('store-modal')">
           <i class="material-icons">store</i>
         </li>
-        <li class="nav-button" onclick="openModal('catalog-modal')">
+        <li class="nav-button rounded" onclick="openModal('catalog-modal')">
           <i class="material-icons">pets</i>
         </li>
-        <li class="nav-button" onclick="openModal('settings-modal')">
+        <li class="nav-button rounded" onclick="openModal('settings-modal')">
           <i class="material-icons">settings</i>
         </li>
       </ul>
@@ -55,27 +55,48 @@
                             Store Modal
   ***************************************************************-->
   <div id="store-modal" class="modal">
-    <div class="modal-content">
+    <div class="modal-content rounded">
       <span class="close" onclick="closeModal(event)">&times;</span>
-      <p>Some text in the Modal..</p>
+      <p>This will be the store where you buy new skills!</p>
     </div>
   </div>
   <!--**************************************************************
                         Animal Catalog Modal
   ***************************************************************-->
   <div id="catalog-modal" class="modal">
-    <div class="modal-content">
+    <div class="modal-content rounded">
       <span class="close" onclick="closeModal(event)">&times;</span>
-      <p>Some text in the Modal..</p>
+      <p>This will be where you see all the animals you've collected.</p>
     </div>
   </div>
   <!--**************************************************************
                             Settings Modal
   ***************************************************************-->
   <div id="settings-modal" class="modal">
-    <div class="modal-content">
+    <div class="modal-content rounded">
       <span class="close" onClick="closeModal(event)">&times;</span>
-      <p>Some text in the Modal..</p>
+      <p>This will be where you adjust your settings.</p>
+    </div>
+  </div>
+  <!--**************************************************************
+              Instructions Modal (Displays on Page Load)
+  ***************************************************************-->
+  <div id="settings-modal" class="modal" style="display:block">
+    <div class="modal-content rounded">
+      <span class="close" onClick="closeModal(event)">&times;</span>
+        <h3>Tutorial</h3>
+        <p>Drag the giraffe over to his friend!</p>
+        <div class="tutorial-container">
+          <div class="draggable tutorial_giraffe">
+            <span class="fade-in-out"></span>
+            <img src="img/animal_giraffe.png" alt="giraffe">
+          </div>
+          <i class="tutorial-arrow material-icons">keyboard_arrow_right</i>
+          <div class="draggable tutorial_giraffe">
+            <span class="fade-in-out"></span>
+            <img src="img/animal_giraffe.png" alt="giraffe">
+          </div>
+        </div>
     </div>
   </div>
   <!--**************************************************************

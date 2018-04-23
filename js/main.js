@@ -46,12 +46,15 @@ function makeAnimal(animalType) {
 }
 
 // Add a new animal every 5 seconds until maxAnimals count is reached
-setInterval(function() {
-  if(animalCounter < maxAnimals) {
-    gameBox.appendChild(makeAnimal("animal_giraffe"));
-    animalCounter++;
-  }
-}, 5000);
+function startPopulating() {
+  setInterval(function() {
+    if(animalCounter < maxAnimals) {
+      gameBox.appendChild(makeAnimal("animal_giraffe"));
+      animalCounter++;
+    }
+  }, 5000);
+}
+startPopulating();
 
 /****************************************************
   Make animals draggable - uses Interact.js
@@ -128,6 +131,21 @@ interact('.animal_crocodile').dropzone({
     evolveAnimal(event.target);
   },
 });
+
+interact('.tutorial_giraffe').dropzone({
+  accept: '.tutorial_giraffe',
+  overlap: OVERLAP_AMOUNT,
+  ondrop: function (event) {
+    removeAnimal(event.relatedTarget);
+    evolveAnimal(event.target);
+    clearGameChanges();
+  },
+});
+
+function clearGameChanges() {
+  score = 0;
+  animalCounter = 3;
+}
 
 /****************************************************
   Allow animals to be removed and evolved
