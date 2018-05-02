@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Animal Fuser</title>
+  <title>Animal Matcher</title>
   <!--**************************************************************
                             Fonts, Styles
   ***************************************************************-->
@@ -15,7 +15,7 @@
                                 Header
   ***************************************************************-->
   <header class="rounded">
-    <h1>Animal Fuser</h1>
+    <h1>Animal Matcher</h1>
     <p>$<span id="scoreboard">0</span></p>
     <nav>
       <ul class="nav-list">
@@ -35,17 +35,17 @@
                                 Main
   ***************************************************************-->
   <main  class="rounded">
-    <div id="game-box">
+    <div id="gameboard">
       <!-- We start the game with 3 giraffes -->
-      <div class="draggable animal_giraffe">
+      <div class="draggable animal_giraffe bobble">
         <span class="fade-in-out"></span>
         <img src="img/animal_giraffe.png" alt="giraffe">
       </div>
-      <div class="draggable animal_giraffe">
+      <div class="draggable animal_giraffe bobble">
         <span class="fade-in-out"></span>
         <img src="img/animal_giraffe.png" alt="giraffe">
       </div>
-      <div class="draggable animal_giraffe">
+      <div class="draggable animal_giraffe bobble">
         <span class="fade-in-out"></span>
         <img src="img/animal_giraffe.png" alt="giraffe">
       </div>
@@ -84,21 +84,22 @@
   <div id="settings-modal" class="modal" style="display:block">
     <div class="modal-content rounded">
       <span class="close" onClick="closeModal(event)">&times;</span>
-        <h3>Tutorial</h3>
-        <p>Drag the giraffe over to his friend!</p>
-        <div class="tutorial-container">
-          <div class="draggable tutorial_giraffe">
-            <span class="fade-in-out"></span>
-            <img src="img/animal_giraffe.png" alt="giraffe">
-          </div>
-          <i class="tutorial-arrow material-icons">keyboard_arrow_right</i>
-          <div class="draggable tutorial_giraffe">
-            <span class="fade-in-out"></span>
-            <img src="img/animal_giraffe.png" alt="giraffe">
-          </div>
+      <h3>How to Play</h3>
+      <p id="tutorial-instruction">Drag the giraffe over to his friend!</p>
+      <div class="tutorial-container">
+        <div class="draggable tutorial_giraffe">
+          <span class="fade-in-out"></span>
+          <img src="img/animal_giraffe.png" alt="giraffe">
         </div>
-    </div>
-  </div>
+        <i class="tutorial-arrow material-icons">keyboard_arrow_right</i>
+        <div class="draggable tutorial_giraffe">
+          <span class="fade-in-out"></span>
+          <img src="img/animal_giraffe.png" alt="giraffe">
+        </div>
+      </div><!-- .tutorial-container -->
+      <button id="tutorial-dismiss" class="nav-button rounded" onClick="closeModal(event)">Start</button>
+    </div><!-- .modal-content -->
+  </div><!-- .modal -->
   <!--**************************************************************
                                 Footer
   ***************************************************************-->

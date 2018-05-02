@@ -19,6 +19,12 @@
   /*** Layout ***/
   --img-side-length: 50px;
   --img-div-side-length: 52px;
+  /*** Animation ***/
+    /* These variables are updated via JavaScript to create
+    random motion within the gameboard. */
+  --translate-x: 10px;
+  --translate-y: 15px;
+  --translate-z: 20px;
 }
 
 /*********************************************************
@@ -123,7 +129,7 @@ footer {
 /*********************************************************
                         Game Board
 *********************************************************/
-#game-box {
+#gameboard {
   width: 100%;
   height: 100%;
   min-height: 60vh;
@@ -135,6 +141,32 @@ footer {
   width: var(--img-div-side-length);
   height: var(--img-div-side-length);
 }
+
+/************** Animal Animation **************/
+/* @keyframes bobble {
+    0% {
+        transform: translate3d(50px, 40px, 0px);
+        animation-timing-function: ease-in;
+    }
+    50% {
+        transform: translate3d(50px, 50px, 0px);
+        animation-timing-function: ease-out;
+    }
+    100% {
+        transform: translate3d(50px, 40px, 0px);
+    }
+} */
+
+.bobble {
+  /* animation: bobble 2s infinite; */
+  transform: translate3d(
+    var(--translate-x),
+    var(--translate-y),
+    var(--translate-y)
+);
+  transition: 1s ease-in;
+}
+/*********************************************/
 
 /************** Points Animation **************/
 @keyframes fadeInOut {
@@ -178,6 +210,7 @@ footer {
   padding: 20px;
   border: 1px solid #888;
   background-color: #333;
+  text-align: center;
 }
 
 .close {
@@ -216,4 +249,13 @@ footer {
   animation: slide 1s linear infinite;
   font-size: 35px;
   font-weight: bold;
+}
+
+#tutorial-dismiss {
+  display: none;
+  transition: 0.2s ease-in;
+  color: var(--text-color);
+  font-size: 1rem;
+  padding: 5px 10px;
+  margin-top: 15px;
 }
