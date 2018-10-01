@@ -116,6 +116,7 @@ footer {
 .nav-button {
   border: 1px solid var(--text-color);
   background-color: var(--primary);
+  color: var(--text-color);
   padding: 5px 10px;
   margin: 2px 5px;
   transition: 0.2s ease-in;
@@ -135,38 +136,15 @@ footer {
   min-height: 60vh;
   display: flex;
   flex-wrap: wrap;
+  /* justify-content: space-around; */
+  align-items: center;
 }
 
+/* Set draggable div to fit image size */
 .draggable {
   width: var(--img-div-side-length);
   height: var(--img-div-side-length);
 }
-
-/************** Animal Animation **************/
-/* @keyframes bobble {
-    0% {
-        transform: translate3d(50px, 40px, 0px);
-        animation-timing-function: ease-in;
-    }
-    50% {
-        transform: translate3d(50px, 50px, 0px);
-        animation-timing-function: ease-out;
-    }
-    100% {
-        transform: translate3d(50px, 40px, 0px);
-    }
-} */
-
-.bobble {
-  /* animation: bobble 2s infinite; */
-  transform: translate3d(
-    var(--translate-x),
-    var(--translate-y),
-    var(--translate-y)
-);
-  transition: 1s ease-in;
-}
-/*********************************************/
 
 /************** Points Animation **************/
 @keyframes fadeInOut {

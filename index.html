@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Animal Matcher</title>
+  <title>Animal Morpher</title>
   <!--**************************************************************
                             Fonts, Styles
   ***************************************************************-->
@@ -49,7 +49,7 @@
         <span class="fade-in-out"></span>
         <img src="img/animal_giraffe.png" alt="giraffe">
       </div>
-    </div><!-- #game-box -->
+    </div>
   </main>
   <!--**************************************************************
                             Store Modal
@@ -57,7 +57,19 @@
   <div id="store-modal" class="modal">
     <div class="modal-content rounded">
       <span class="close" onclick="closeModal(event)">&times;</span>
-      <p>This will be the store where you buy new skills!</p>
+      <h3>Store</h3>
+      <p><button class="nav-button rounded" onClick="buyFromStore('speed')">
+        <i class="material-icons">pets</i>
+      </button>
+      Spawn animals faster - $200</p>
+      <br>
+      <p><button class="nav-button rounded" onClick="buyFromStore('speed')">
+        <i class="material-icons">pets</i>
+      </button>
+      Increase max animals - $200</p>
+      <p>
+        <button class="nav-button rounded" onclick="closeModal(event)">Close</button>
+      </p>
     </div>
   </div>
   <!--**************************************************************
@@ -66,7 +78,7 @@
   <div id="catalog-modal" class="modal">
     <div class="modal-content rounded">
       <span class="close" onclick="closeModal(event)">&times;</span>
-      <p>This will be where you see all the animals you've collected.</p>
+      <p>How many have you collected?</p>
     </div>
   </div>
   <!--**************************************************************
@@ -113,5 +125,6 @@
   <script src="js/modals.js"></script>
   <script src="js/animals.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/animate.js"></script>
 </body>
 </html>

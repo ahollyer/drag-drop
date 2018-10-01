@@ -7,14 +7,17 @@
 /****************************************************
   Set up game variables
 ****************************************************/
-const GAMEBOARD = document.getElementById("gameboard");
 const SCOREBOARD = document.getElementById("scoreboard");
+const GAMEBOARD = document.getElementById("gameboard");
 // The user begins the game with 3 giraffes, a 10-animal
 // limit, and a new animal every 5 seconds.
 var animalCounter = 3;
 var maxAnimals = 10;
 var makeAnimalInterval = 5000;
 var score = 0;
+// We flag the animal being dragged to prevent
+// random movement code from acting on it.
+var animalBeingDragged = null;
 
 /****************************************************
   Track the user's score
@@ -56,35 +59,16 @@ function startPopulating() {
     }
   }, makeAnimalInterval);
 }
+
 // TODO: Run this only once the tutorial window is closed.
 startPopulating();
-
-/****************************************************
-  Move animals randomly around the gameboard
-****************************************************/
-// TODO: Trap animals into bounding box
-var bobbleAnimal = document.getElementsByClassName(".bobble");
-
-function setProperty(tx, ty, tz) {
-  bobbleAnimal.style.transform = `translate3d(${tx}px, ${ty}px, ${tz}px)`;
-}
-
-function changeTranslateValues() {
-  // Random number from -100 to 100
-  var x = Math.floor(Math.random() * 201) - 100;
-  var y = Math.floor(Math.random() * 201) - 100;
-  var z = Math.floor(Math.random() * 201) - 100;
-  setProperty(x, y, z);
-}
-
-// setInterval(changeTranslateValues, 500);
 
 /****************************************************
   Make animals draggable - uses Interact.js
 ****************************************************/
 interact('.draggable').draggable({
     // Enable inertial throwing
-    inertia: true,
+    // inertia: true,
     // Keep animals within their parental div (#gameboard)
     restrict: {
       restriction: "parent",
@@ -93,10 +77,12 @@ interact('.draggable').draggable({
     },
     autoScroll: true,
     onmove: dragMoveListener,
+    ondrop: resetAnimalBeingDragged
 });
 
 function dragMoveListener(event) {
   var target = event.target;
+  animalBeingDragged = target;
   // Store the dragged position in the data-x/data-y attributes
   var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
   var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
@@ -107,6 +93,10 @@ function dragMoveListener(event) {
   // Update the posiion attributes
   target.setAttribute('data-x', x);
   target.setAttribute('data-y', y);
+}
+
+function resetAnimalBeingDragged() {
+  animalBeingDragged = null;
 }
 
 /****************************************************
