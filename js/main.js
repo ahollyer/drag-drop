@@ -22,13 +22,15 @@ var animalBeingDragged = null;
 /****************************************************
   Track the user's score
 ****************************************************/
-function updateScore(pts, span) {
+function updateScore(pts = 0, span) {
   score += pts;
   // Update scoreboard at top of screen
   SCOREBOARD.innerText = score;
   // In span, flash points earned with CSS animation
-  span.classList.add("fade-in-out");
-  span.textContent = `+$${pts}`;
+  if(span) {
+    span.classList.add("fade-in-out");
+    span.textContent = `+$${pts}`;
+  }
 }
 
 /****************************************************
@@ -168,6 +170,32 @@ function evolveAnimal(animalDiv) {
       updateScore(animalToEvolve.pts, newSpan);
     }
   });
+}
+
+/****************************************************
+  Store
+****************************************************/
+function buyFromStore(item) {
+  switch(item) {
+    case 'speed':
+      const span = document.getElementById('speed-price');
+      const price = parseFloat(span.innerText);
+      if(price <= score) {
+        // TODO: Actually update rate of population based on new interval
+        makeAnimalInterval -= 500;
+        score -= price;
+        span.innerText = (price * 2);
+        updateScore();
+      }
+      break;
+    case 'max':
+      maxAnimals += 1;
+      const maxPrice = document.getElementById('max-price');
+      maxPrice.innerText = (parseFloat(maxPrice.innerText) * 2);
+      break;
+    default:
+      return;
+  }
 }
 
 /****************************************************
